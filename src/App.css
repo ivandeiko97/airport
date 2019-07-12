@@ -1,0 +1,101 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto:400,500,700,900&display=swap');
+
+body {
+  background-color: #e7efec;
+  color: #2f2f2f;
+  font-family: 'Roboto', sans-serif;  
+}
+
+.flightsPage {
+  position: relative;
+  background-color: #fff;
+  width: 70%;
+  margin: 90px auto;
+}
+
+.changedDisplayTable {
+  width: 100%;
+}
+
+.changedDisplayTable label {
+  position: absolute;
+  height: 20px;
+  display: flex;
+  justify-content: center;
+  padding: 15px 0;
+  cursor: pointer;
+  top: -50px;
+  width: 55%;
+  border-top-left-radius: 60px;
+  border-top-right-radius: 60px;
+  color: white;
+  background-color: rgba(30,183,238,.6);
+  font-size: 22px;
+  user-select: none;
+}
+
+.changedDisplayTable label:hover {
+  background: #1eb7ee;
+}
+
+section.buttonChangedDay button.selectedDay {
+  color: #1eb7ee;
+  border-color: #1eb7ee;
+}
+
+span {
+  margin-right: 10px;
+}
+
+svg {
+  width: 40px;
+  height: 28px;
+}
+
+.up svg {
+  transform: rotate(55deg);
+}
+
+.changedDisplayTable label:last-child {
+  margin-left: 45%;
+}
+
+.changedDisplayTable label.selectedDisplay {
+  background: white;
+  color: #1eb7ee;
+  z-index: 1;
+}
+
+section.buttonChangedDay {
+  user-select: none;
+  margin-bottom: 20px;
+  margin-left: 20px;
+}
+
+section.buttonChangedDay button {
+  margin-top: 15px;
+  background: #fff;
+  text-transform: uppercase;
+  font-weight: 700;
+  font-size: 14px;
+  color: rgba(149,152,154,.7);
+  cursor: pointer;
+  padding: 0 0 10px;
+  border: none;
+  border-bottom: 3px solid rgba(149,152,154,.7);
+  outline: none;
+}
+
+section.buttonChangedDay div {
+  margin-bottom: 10px;
+}
+
+section.buttonChangedDay button:hover {
+  color: #1eb7ee;
+  border-color: #1eb7ee;
+}
+
+section.buttonChangedDay button:nth-child(2) {
+  padding-right: 10px;
+  padding-left: 10px;
+}

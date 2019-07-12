@@ -1,0 +1,72 @@
+
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+}
+
+
+tbody tr:nth-child(odd) {
+  background: rgba(0,102,135,.1);
+}
+
+thead th {
+  padding-bottom: 10px;
+  padding-top: 15px;
+  color: #95989a;
+  font-weight: 400;
+}
+
+thead th:nth-child(1) {
+  padding-left: 10px;
+}
+ 
+.terminal span {
+  display: flex;
+  margin-left: 20px;
+  border-radius: 50%;
+  height: 30px;
+  width: 30px;
+  justify-content: center;
+  align-items: center;
+  font-weight: 700;
+  font-size: 18px;
+}
+
+.terminalA {
+  color:#63c745;
+  border: 1px solid #63c745;
+}
+
+
+.terminalD {
+  color: #1eb7ee;
+  border: 1px solid #1eb7ee;
+}
+
+tbody tr:hover {
+  box-shadow: 0 5px 10px rgba(0,0,0,.2);
+}
+
+tbody td {
+  padding: 20px 0; 
+}
+
+
+td.codeShare span,
+td.airline span {
+  display: flex;
+  align-items: center;
+  margin-bottom: 5px;
+}
+
+td.codeShare span.spCodeShare {
+  line-height: 36px;
+}
+
+
+.airlineLogo {
+  width: 60px;
+  margin-right: 5px;
+}
