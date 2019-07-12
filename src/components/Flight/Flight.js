@@ -16,8 +16,9 @@ export default function FlightDeparture(props) {
       <td className="airline">
         {props.flight.codeShareData.map(item => {
           return <span key={item.airline.en.name}>
-          <img className="airlineLogo" src={item.airline.en.logoSmallName} alt="airline logo"/>
-          {item.airline.en.name}</span>
+            <img className="airlineLogo" src={item.airline.en.logoSmallName} alt="airline logo"/>
+            {item.airline.en.name}
+          </span>
         })}
       </td>
       <td className="codeShare">
