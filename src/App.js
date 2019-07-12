@@ -52,8 +52,8 @@ export default class App extends Component {
         this.setState({
           ...this.state,
           loaded: true,
-          arrival: arrival.filter(item => this.filterFlight(this.state.date, item.timeArrExpectCalc)),
-          departure: departure.filter(item => this.filterFlight(this.state.date, item.timeDepExpectCalc))
+          arrival: arrival.filter(item => this.filterFlight(this.state.date, item.timeToStand)).sort(this.sortOfTime),
+          departure: departure.filter(item => this.filterFlight(this.state.date, item.timeDepShedule)).sort(this.sortOfTime)
         }); 
       });
   };
@@ -63,6 +63,20 @@ export default class App extends Component {
     const flightDay = new Date(flightDate).getDate();
     return flightDay === currentDay;
   };
+
+  sortOfTime(a, b) {
+    const a_time = new Date(a.timeToStand);
+    const b_time = new Date(b.timeToStand);
+    const hourA = a_time.getHours();
+    const hourB = b_time.getHours();
+    const minutesA = a_time.getMinutes();
+    const minutesB = b_time.getMinutes();
+    if (hourA > hourB || hourA < hourB) {
+      return hourA - hourB;
+    } else {
+        return minutesA - minutesB;
+    };
+  }
 
   componentDidMount() {
     this.getCurrentDate(0, 'today');
@@ -85,6 +99,8 @@ export default class App extends Component {
 
   render() {
     if (this.state.loaded) {
+      const COLOR_WHITE = '#fff';
+      const COLOR_BLUE =  '#1eb7ee'
       return (
         <div className="flightsPage">
           <section className="changedDisplayTable">
@@ -92,7 +108,7 @@ export default class App extends Component {
                className={this.state.displayTable === "DEPARTURES" ? 'selectedDisplay' : ''} 
                onClick={(e) => this.changedDisplayTable(e)}
             > 
-             <IconSVG class="down" background={this.state.displayTable === "DEPARTURES" ? '#1eb7ee' : 'white'}/>
+             <IconSVG class="down" background={this.state.displayTable === "DEPARTURES" ? COLOR_BLUE : COLOR_WHITE}/>
               DEPARTURES   
             </label>
             
@@ -100,14 +116,14 @@ export default class App extends Component {
               className={this.state.displayTable === "ARRIVALS" ? 'selectedDisplay' : ''}
               onClick={(e) => this.changedDisplayTable(e)}
             >
-              <IconSVG class="up" background={this.state.displayTable === "ARRIVALS" ? '#1eb7ee' : 'white'}/>
+              <IconSVG class="up" background={this.state.displayTable === "ARRIVALS" ? COLOR_BLUE : COLOR_WHITE}/>
               ARRIVALS
             </label>
           </section>
           <section className="buttonChangedDay">
             <button
               className={this.state.selectedDay === 'yesterday' ? 'selectedDay' : ''}
-              onClick={this.getCurrentDate.bind(this, -1, 'yesterday')}>
+              onClick={this.getCurrentDate.bind(this, - 1, 'yesterday')}>
               <div>{this.getDayAndMonth(-1)}</div>
               Yesterday
             </button>
@@ -119,7 +135,7 @@ export default class App extends Component {
              </button>
             <button
               className={this.state.selectedDay === 'tommorow' ? 'selectedDay' : ''}
-              onClick={this.getCurrentDate.bind(this, +1, 'tommorow')}> 
+              onClick={this.getCurrentDate.bind(this, + 1, 'tommorow')}> 
                 <div>{this.getDayAndMonth(1)}</div>
                 Tommorow
               </button>

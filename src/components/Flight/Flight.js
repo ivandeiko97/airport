@@ -2,9 +2,9 @@ import React from 'react'
 import Status from '../status/Status';
 
 export default function FlightDeparture(props) {
-  const time = new Date(props.flight.actual);
+  const time = new Date(props.flight.timeToStand || props.flight.timeDepShedule);
   const minutes = time.getMinutes();
-  const localTime = `${time.getHours()}:${minutes >= 10 ? minutes : '0' + minutes}`;
+  const localTime = `${time.getHours()}:${minutes.toString().padStart(2, '0')}`;
   return (
     <tr>
       <td className="terminal">
